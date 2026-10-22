@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>weather information</title>
+        <title>student attendance tracker</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
-            <h1>weather information</h1>
-            <p>check current weather of a city</p>
-        </header>
+        <h1>student attendance tracker</h1>
         <div class="content">
-            <h2>search weather</h2>
-            <input id="city" placeholder="enter city name">
-            <button onclick="getWeather()">get weather</button>
-            <div id="result"></div>
+            <input id="name" placeholder="enter student name">
+            <select id="status">
+                <option value="Present">present</option>
+                <option value="Absent">absent</option>
+            </select>
+            <button onclick="markAttendance()">mark attendance</button>
+            <h2>Attendance</h2>
+            <div id="list"></div>
+            <P id="count"></p>
         </div>
         <script src="script.js"></script>
     </body>

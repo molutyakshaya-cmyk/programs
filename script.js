@@ -1,17 +1,20 @@
-async function getWeather(){
-    let city=document.getElementById("city").value ;
-    if(city=="")return alert("enter a city name");
-    try {
-        let res =await fetch("https://wttr.in/"+city+"?format=j1");
-        let data=await res.json();
-        let w=data.current_condition[0];
-        document.getElementById("result").innerHTML=
-        "<h3>"+city+"</h3>"+
-        "temperature:"+w.temp_c+"c<br>"+
-        "condition:"+w.weatherDesc[0].value+"<br>"+
-        "humidity:"+w.humidity+"%";
-    }    catch {
-        document.getElementById("result").innerHTML=
-        "unable to get weather information";
+let present=0;
+let absent=0;
+function markAttendance(){
+    let name=document.getElementById("name").value;
+    let status=document.getElementById("status").value;
+    if (name=="")
+    {
+        alert("enter student name");
+        return;
     }
+    document.getElementById("list").innerHTML+=
+    "<div class='student'>"+name+"-"+status+"</div>";
+    if(status=="Present")
+        present++;
+    else
+        absent++;
+    document.getElementById("count").innerHTML=
+    "Present:"+present+"|Absent:"+absent;
+    document.getElementById("name").value="";
 }
