@@ -1,20 +1,17 @@
-function addNote() {
-    let text=document.getElementById("note").value ;
-    if(text=="")return alert("enter a note");
-    let note=document.createElement("div");
-    note.className="note";
-    note.innerHTML=
-    "<span>" +text+"</span>"+
-   '<button onclick="deleteNote(this)">delete</button>'+
-   '<button onclick="editNote(this)">edit</button>';
-   document.getElementById("notes").appendChild(note);
-   document.getElementById("note").value ="";
-}
-function editNote(btn){
-    let span=btn.parentElement.querySelector("span");
-    let text=prompt("edit note:",span.textContent);
-    if(text)span.textContent=text;
-}
-function deleteNote(btn){
-    btn.parentElement.remove();
+async function getWeather(){
+    let city=document.getElementById("city").value ;
+    if(city=="")return alert("enter a city name");
+    try {
+        let res =await fetch("https://wttr.in/"+city+"?format=j1");
+        let data=await res.json();
+        let w=data.current_condition[0];
+        document.getElementById("result").innerHTML=
+        "<h3>"+city+"</h3>"+
+        "temperature:"+w.temp_c+"c<br>"+
+        "condition:"+w.weatherDesc[0].value+"<br>"+
+        "humidity:"+w.humidity+"%";
+    }    catch {
+        document.getElementById("result").innerHTML=
+        "unable to get weather information";
+    }
 }

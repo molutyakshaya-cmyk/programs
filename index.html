@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>note manager</title>
+        <title>weather information</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <header>
-            <h1>my notes manager</h1>
-            <p>create and manage your notes</p>
+            <h1>weather information</h1>
+            <p>check current weather of a city</p>
         </header>
         <div class="content">
-            <h2>add a note</h2>
-            <input id="note" placeholder="enter your note">
-            <button onclick="addNote()">add note</button>
-            <h2>my notes</h2>
-            <div id="notes"></div>
+            <h2>search weather</h2>
+            <input id="city" placeholder="enter city name">
+            <button onclick="getWeather()">get weather</button>
+            <div id="result"></div>
         </div>
         <script src="script.js"></script>
     </body>
